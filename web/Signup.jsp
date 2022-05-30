@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <title>Signup Form</title>
+        <title>Đăng kí tài khoản</title>
     </head>
     <body>
         <div id="logreg-forms">
@@ -29,11 +29,15 @@
                 </c:if>
                 <c:if test="${user_message}" >
                     <div class="alert alert-warning" role="alert">
-                        Tài khoản đã tồn tại
+                        Tài khoản đã tồn tại !
                     </div>
                 </c:if>
-                
-                    <input name="user" value="${user}" type="text" id="user-name" class="form-control" placeholder="Tên tài khoản" required="" autofocus="">
+                <c:if test="${email_message}" >
+                    <div class="alert alert-warning" role="alert">
+                        Email đã được đăng kí!
+                    </div>
+                </c:if>
+                <input name="user" value="${user}" type="text" id="user-name" class="form-control" placeholder="Tên tài khoản" required="" autofocus="">
                 <input name="pass" value="${pass}" type="password" id="user-pass" class="form-control" placeholder="Mật khẩu" required autofocus="">
                 <input name="repass" value="${repass}" type="password" id="user-repeatpass" class="form-control" placeholder="Nhập lại mật khẩu" required autofocus="">
                 <input name="name" value="${name}"  type="text" id="user-name" class="form-control" placeholder="Tên người dùng" required="" autofocus="">
