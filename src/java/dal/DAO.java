@@ -160,6 +160,37 @@ public class DAO extends DBContext{
         }
         return null;
     }
+    public boolean check_User_user(String user){
+        String sql = "select * from [User] \n"
+                + "where [user] = ? ;";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, user);
+ 
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+    public boolean check_User_email(String email){
+        String sql = "select * from [User] \n"
+                + "where [email] = ? ;";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+ 
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
     // dang ki taikhoan
     //INSERT INTO [User] VALUES (N'sa', N'123', N'Hoa',N'16/02/2008', N'abc@gmail.com', N'07865676', 0);
     public void addUser(String user, String pass, String u_name, 
