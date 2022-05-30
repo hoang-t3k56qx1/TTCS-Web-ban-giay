@@ -30,13 +30,18 @@ public class SignupServlet extends HttpServlet {
         boolean success_message= false;// thong bao ve Login.jsp dk thanh cong
         boolean user_message= false;// thong bao user da ton tai
         boolean error_message= false;// mat khau ko dong nhat
+        boolean email_message= false;// email da ton tai
         String url="";
         if(!pass.equals(repass)){// mat ko dong nhat
             error_message=true;
             url="Signup.jsp";
         }
-        else if(USER != null){// tai khoan da ton tai
+        else if(dao.check_User_user(user)){// tai khoan da ton tai
             user_message=true;
+            url="Signup.jsp";
+        }
+        else if(dao.check_User_email(email)){// email da ton tai
+            email_message=true;
             url="Signup.jsp";
         }
         else{
@@ -44,6 +49,7 @@ public class SignupServlet extends HttpServlet {
             dao.addUser(user, pass, name, dateofbirth, email, phone);
             url="Login.jsp";
         }
+            request.setAttribute("email_message", email_message);
             request.setAttribute("success_message", success_message);
             request.setAttribute("error_message", error_message);
             request.setAttribute("user_message", user_message);
